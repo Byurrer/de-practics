@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: redmine
+    volumes:
+      - redmine-db:/var/lib/mysql
+    networks:
+      - redmine-network
+  redmine:
+    image: redmine:5.1
+    restart: always
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: example
+      REDMINE_SECRET_KEY_BASE: supersecretkey
+    networks:
+      - redmine-network
+    depends_on:
+      - db
+  webserver:
+    image: nginx:1.21
+    restart: always
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - redmine-network
+    depends_on:
+      - redmine
+networks:
+  redmine-network:
+    driver: bridge
+volumes:
+  redmine-db:
