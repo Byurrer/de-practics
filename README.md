@@ -1,6 +1,6 @@
 # Практика "Первые уверенные шаги в Docker"
 
-Презентация и теоретический материал [здесь](https://docs.google.com/presentation/d/1Wb1DUpFaBrItgfjrVjNeX_zYPg_lntWy23HmZ5OqUxs/edit).
+Презентация и теоретический материал [здесь](https://docs.google.com/presentation/d/1ayVj4I-YV2M_I0F9yWq1-0heee-QD08fZiPznQykaKg/edit?usp=sharing).
 
 Практика состоит из 4-х этапов:
 1. простой запуск скрипта в контейнере: [0-php-single](0-php-single)
